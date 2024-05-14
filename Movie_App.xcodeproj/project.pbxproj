@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		481C43CE2BF37062004B8D52 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481C43CD2BF37062004B8D52 /* LoginViewController.swift */; };
 		488C942D2BF30DC8004A1E41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C942C2BF30DC8004A1E41 /* AppDelegate.swift */; };
 		488C942F2BF30DC8004A1E41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C942E2BF30DC8004A1E41 /* SceneDelegate.swift */; };
 		488C94312BF30DC8004A1E41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C94302BF30DC8004A1E41 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		481C43CD2BF37062004B8D52 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		488C94292BF30DC8004A1E41 /* Movie_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movie_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		488C942C2BF30DC8004A1E41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		488C942E2BF30DC8004A1E41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				488C942C2BF30DC8004A1E41 /* AppDelegate.swift */,
 				488C942E2BF30DC8004A1E41 /* SceneDelegate.swift */,
 				488C94302BF30DC8004A1E41 /* ViewController.swift */,
+				481C43CD2BF37062004B8D52 /* LoginViewController.swift */,
 				488C94322BF30DC8004A1E41 /* Main.storyboard */,
 				488C94352BF30DCA004A1E41 /* Assets.xcassets */,
 				488C94372BF30DCA004A1E41 /* LaunchScreen.storyboard */,
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				481C43CE2BF37062004B8D52 /* LoginViewController.swift in Sources */,
 				488C94312BF30DC8004A1E41 /* ViewController.swift in Sources */,
 				488C942D2BF30DC8004A1E41 /* AppDelegate.swift in Sources */,
 				488C942F2BF30DC8004A1E41 /* SceneDelegate.swift in Sources */,
