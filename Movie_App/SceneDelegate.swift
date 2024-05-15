@@ -10,13 +10,8 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
     // 로그인 여부 확인
-    class SceneDelegate: UIResponder, UIWindowSceneDelegate
-    {
-        var isLogged: Bool = false // 테스트
-    }
+    var isLogged: Bool = false // 테스트
     
     // func scene은 처음 앱에 접근할때 최초로 1번 실행한다
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -24,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         let storyboard = UIStoryboard(name:"Main" , bundle: nil) //Main.Storyboard 가져오기
-        
+       
         if isLogged == false {
                     // 로그인 안된 상태
                     guard let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else { return }
