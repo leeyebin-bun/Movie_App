@@ -13,6 +13,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // 로그인 여부 확인
     var isLogged: Bool = false // 테스트
     
+    func changeRootViewController(_ vc: UIViewController , animated: Bool)
+    {
+        guard let window = self.window else {return}
+        window.rootViewController = vc //전환
+        
+        // 화면전환 애니메이션 추가
+        UIView.transition(with: window, duration: 0.4, options: [.transitionCrossDissolve], animations: nil, completion: nil)
+    }
+    
     // func scene은 처음 앱에 접근할때 최초로 1번 실행한다
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
