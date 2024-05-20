@@ -10,9 +10,8 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    // 로그인 여부 확인
-    var isLogged: Bool = false // 테스트
     
+    /*
     func changeRootViewController(_ vc: UIViewController , animated: Bool)
     {
         guard let window = self.window else {return}
@@ -21,25 +20,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // 화면전환 애니메이션 추가
         UIView.transition(with: window, duration: 0.4, options: [.transitionCrossDissolve], animations: nil, completion: nil)
     }
+    */
     
     // func scene은 처음 앱에 접근할때 최초로 1번 실행한다
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
-        guard let _ = (scene as? UIWindowScene) else { return }
         
+        guard let _ = (scene as? UIWindowScene) else { return }
         let storyboard = UIStoryboard(name:"Main" , bundle: nil) //Main.Storyboard 가져오기
-       
-        if isLogged == false {
-                    // 로그인 안된 상태
-                    guard let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else { return }
-                    window?.rootViewController = loginVC
-                } else {
-                    // 로그인 된 상태
-                    guard let mainVC = storyboard.instantiateViewController(withIdentifier: "MainView") as? ViewController else { return }
-                    window?.rootViewController = mainVC
-                }
-            }
-
+        
+        //PosterView
+        guard let PosterVC = storyboard.instantiateViewController(withIdentifier: "PosterView") as? PosterViewController else { return }
+        
+        //MainView
+        guard let mainVC = storyboard.instantiateViewController(withIdentifier: "MainView") as? ViewController else { return }
+        window?.rootViewController = mainVC
+        
+    }
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

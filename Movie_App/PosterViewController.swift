@@ -7,11 +7,12 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class PosterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    /*
     // 로그인 -> 메인화면 전환
     @IBAction func goLogin(_ sender: Any)
     {
@@ -25,4 +26,5 @@ class LoginViewController: UIViewController {
         // SceneDelegate의 changeRootViewController 메서드 호출
         // 파라미터로 넘길 값 : mainVC
     }
+     */
 }
