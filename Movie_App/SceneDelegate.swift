@@ -33,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //MainView
         guard let mainVC = storyboard.instantiateViewController(withIdentifier: "MainView") as? ViewController else { return }
-        window?.rootViewController = mainVC
+        window?.rootViewController = PosterVC
         
     }
     func sceneDidDisconnect(_ scene: UIScene) {
