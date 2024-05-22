@@ -18,11 +18,6 @@ class ViewController: UIViewController {
         //self.view.backgroundColor = .systemBackground // IOS 다크모드 / 라이트모드 적용
        
     }
-    
-    
-    
-    
-
 
 }
 
