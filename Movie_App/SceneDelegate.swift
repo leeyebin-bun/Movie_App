@@ -30,11 +30,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storyboard = UIStoryboard(name:"Main" , bundle: nil) //Main.Storyboard 가져오기
         
         //PosterView
-        guard let PosterVC = storyboard.instantiateViewController(withIdentifier: "PosterView") as? PosterViewController else { return }
+        guard let posterVC = storyboard.instantiateViewController(withIdentifier: "PosterView") as? PosterViewController else { return }
         
         //MainView
         guard let mainVC = storyboard.instantiateViewController(withIdentifier: "MainView") as? ViewController else { return }
-        window?.rootViewController = PosterVC
+        
+        //CreateView
+        guard let createVC = storyboard.instantiateViewController(withIdentifier: "CreateView") as?
+                CreateViewController else { return }
+        window?.rootViewController = createVC
         
     }
     func sceneDidDisconnect(_ scene: UIScene) {
