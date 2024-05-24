@@ -7,14 +7,65 @@
 
 import UIKit
 
-class CreateViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+protocol SendDataDelegate {
+    func recieveData(response : String) -> Void
+}
+
+class CreateViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , SendDataDelegate {
     
+    @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var itemImg: UIImageView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var titleTextField: UITextField!
+    
     let imgPickerController = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.doneButton.layer.masksToBounds = true
+        self.doneButton.layer.cornerRadius = 6
+        self.doneButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+        
+        self.navigationBar.layer.masksToBounds = true
+        self.navigationBar.layer.cornerRadius = 15
+        
         imgPickerController.delegate = self
+    }
+    
+    @IBAction func sendData(_ sender : Any)
+    {
+        
+    }
+    
+    func recieveData(response: String) {
+        print("response : \(response)")
+    }
+    
+    /*
+     뒤로가기 버튼 함수
+     */
+    @IBAction func OnClickBackButton(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
+    
+    /*
+     생성완료 버튼 함수
+     */
+    @IBAction func OnClickDoneButton(_ sender: Any) {
+        
+        guard let vc = self.storyboard?.instantiateViewController(identifier:  "PosterViewController") as? PosterViewController else { return }
+        
+        vc.dataDelegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+        // PosterView 로 이동
+        guard let posterVC = self.storyboard?.instantiateViewController(identifier: "PosterView") else { return }
+        posterVC.modalTransitionStyle = .coverVertical
+        posterVC.modalPresentationStyle = .fullScreen
+        
+        self.present(posterVC, animated: true, completion: nil)
     }
     
     @IBAction func addImgAction(_ sender: Any) {

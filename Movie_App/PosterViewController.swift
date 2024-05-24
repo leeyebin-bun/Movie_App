@@ -16,8 +16,13 @@ class PosterViewController: UIViewController {
     @IBOutlet weak var posterCellView: UIView!
     @IBOutlet weak var posterCellView_2: UIView!
     @IBOutlet weak var posterCellView_3: UIView!
+    @IBOutlet weak var titleText: UILabel!
+    @IBOutlet weak var captionText: UILabel!
     @IBOutlet weak var posterButton: UIButton!
     
+    var data : String = ""
+    var dataDelegate : SendDataDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +42,10 @@ class PosterViewController: UIViewController {
         self.posterCellView_2.layer.cornerRadius = 15
         self.posterCellView_3.layer.masksToBounds = true
         self.posterCellView_3.layer.cornerRadius = 15
+        
+        self.titleText.text = data
+        dataDelegate?.recieveData(response: "delegate works well~")
+        self.navigationController?.popViewController(animated: true)
     }
     
     /*

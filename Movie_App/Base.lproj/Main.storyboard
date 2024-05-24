@@ -161,12 +161,14 @@
                     <connections>
                         <outlet property="PosterCellView_3" destination="QMx-d9-vg9" id="kHs-8f-W8u"/>
                         <outlet property="calButton" destination="swY-bD-L4Z" id="g7D-FE-hE2"/>
+                        <outlet property="captionText" destination="ChK-nE-B6b" id="rGT-Rn-gqa"/>
                         <outlet property="memoButton" destination="gmB-UA-9Be" id="Z6v-Ra-Yrs"/>
                         <outlet property="navigationBar" destination="S3S-sd-xHw" id="c6t-Jz-25d"/>
                         <outlet property="posterButton" destination="QxN-xd-e1c" id="V2x-9v-XZs"/>
                         <outlet property="posterCellView" destination="bHF-ld-p79" id="WZo-AV-2zo"/>
                         <outlet property="posterCellView_2" destination="7N0-1b-9UX" id="OOO-8z-tpJ"/>
                         <outlet property="targetButton" destination="OG5-AH-fwU" id="rfz-nP-nBP"/>
+                        <outlet property="titleText" destination="c0x-uM-seA" id="X5e-ps-qpS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Wl-GY-Y71" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -232,6 +234,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nFn-TP-e26">
+                                <rect key="frame" x="34" y="59" width="333" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1647058874" green="0.1686274707" blue="0.1686274707" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tw6-Xe-FNV">
+                                <rect key="frame" x="41" y="64" width="62" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.26606260886789235" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <action selector="OnClickBackButton:" destination="jec-fD-aEu" eventType="touchUpInside" id="d7E-aF-omR"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sD1-iC-9VB">
                                 <rect key="frame" x="34" y="154" width="30" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -289,10 +306,28 @@
                                     <color key="baseForegroundColor" systemColor="opaqueSeparatorColor"/>
                                 </buttonConfiguration>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJO-rd-d4l">
+                                <rect key="frame" x="168" y="699" width="65" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.643707633" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.093219780119999998" green="0.093219780119999998" blue="0.093219780119999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Done"/>
+                                <connections>
+                                    <action selector="OnClickAddButton:" destination="CtW-a0-UPs" eventType="touchUpInside" id="zeG-o5-60U"/>
+                                    <action selector="OnClickDoneButton:" destination="jec-fD-aEu" eventType="touchUpInside" id="3Vb-Kr-9Mm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gru-iL-NkE"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="tw6-Xe-FNV" id="GAN-zm-jad"/>
+                        <outlet property="doneButton" destination="yJO-rd-d4l" id="inH-g9-z53"/>
+                        <outlet property="navigationBar" destination="nFn-TP-e26" id="Iwh-dm-q3d"/>
+                        <outlet property="titleTextField" destination="Of2-nn-6uf" id="eQb-jr-etg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UgM-hR-Xcz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
