@@ -38,7 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //CreateView
         guard let createVC = storyboard.instantiateViewController(withIdentifier: "CreateView") as?
                 CreateViewController else { return }
-        window?.rootViewController = createVC
+        window?.rootViewController = posterVC
         
     }
     func sceneDidDisconnect(_ scene: UIScene) {

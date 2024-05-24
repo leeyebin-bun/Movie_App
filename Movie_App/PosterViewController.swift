@@ -8,10 +8,50 @@
 import UIKit
 
 class PosterViewController: UIViewController {
+    
+    @IBOutlet weak var targetButton: UIButton!
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var memoButton: UIButton!
+    @IBOutlet weak var calButton: UIButton!
+    @IBOutlet weak var posterCellView: UIView!
+    @IBOutlet weak var posterCellView_2: UIView!
+    @IBOutlet weak var posterCellView_3: UIView!
+    @IBOutlet weak var posterButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.targetButton.layer.masksToBounds = true
+        self.targetButton.layer.cornerRadius = 15
+        self.targetButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+        
+        self.memoButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        self.calButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        
+        self.navigationBar.layer.masksToBounds = true
+        self.navigationBar.layer.cornerRadius = 15
+        
+        self.posterCellView.layer.masksToBounds = true
+        self.posterCellView.layer.cornerRadius = 15
+        self.posterCellView_2.layer.masksToBounds = true
+        self.posterCellView_2.layer.cornerRadius = 15
+        self.posterCellView_3.layer.masksToBounds = true
+        self.posterCellView_3.layer.cornerRadius = 15
     }
     
+    /*
+     메인에서 플러스버튼 누를시 이동
+     */
+    @IBAction func OnClickAddButton(_ sender: Any) {
+        //let storyboard = UIStoryboard(name:"CreateView" , bundle: nil)
+        guard let createVC = self.storyboard?.instantiateViewController(identifier: "CreateView") else { return }
+        // 화면전환 애니메이션 설정
+        createVC.modalTransitionStyle = .coverVertical
+        // 전환된 화면이 보여지는 방법 설정
+        createVC.modalPresentationStyle = .fullScreen
+        
+        self.present(createVC, animated: true, completion: nil)
+    }
     /*
     // 로그인 -> 메인화면 전환
     @IBAction func goLogin(_ sender: Any)
