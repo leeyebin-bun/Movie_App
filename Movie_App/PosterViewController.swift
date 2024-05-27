@@ -42,7 +42,7 @@ class PosterViewController: UIViewController {
         self.posterCellView_2.layer.cornerRadius = 15
         self.posterCellView_3.layer.masksToBounds = true
         self.posterCellView_3.layer.cornerRadius = 15
-        
+         
         self.titleText.text = data
         dataDelegate?.recieveData(response: "delegate works well~")
         self.navigationController?.popViewController(animated: true)
