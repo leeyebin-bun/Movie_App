@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol SendDataDelegate {
-    func recieveData(response : String) -> Void
-}
-
-class CreateViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , SendDataDelegate {
+class CreateViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var itemImg: UIImageView!
@@ -32,15 +28,6 @@ class CreateViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.navigationBar.layer.cornerRadius = 15
         
         imgPickerController.delegate = self
-    }
-    
-    @IBAction func sendData(_ sender : Any)
-    {
-        
-    }
-    
-    func recieveData(response: String) {
-        print("response : \(response)")
     }
     
     /*
