@@ -31,14 +31,14 @@ class CreateViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     /*
-     뒤로가기 버튼 함수
+     뒤로가기
      */
     @IBAction func OnClickBackButton(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
     }
     
     /*
-     생성완료 버튼 함수
+     생성완료
      */
     @IBAction func OnClickDoneButton(_ sender: Any) {
         

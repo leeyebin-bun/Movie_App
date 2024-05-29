@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "31D01436-3829-4CD7-BBF1-7BE25F3BFF87"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3CFFB601-CE4F-4889-A789-C03C7D4713EB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Movie_App/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B7F8DAF0-F888-4D33-AE27-62FBFCEDFB93"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Movie_App/PosterViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "PosterViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "B7F8DAF0-F888-4D33-AE27-62FBFCEDFB93 - 9f5c7cf28873776d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_App.PosterViewController.data.getter : Swift.String"
+                  moduleName = "Movie_App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yebin/Desktop/Project/Movie_App/Movie_App/Movie_App/PosterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "B7F8DAF0-F888-4D33-AE27-62FBFCEDFB93 - 9765c7ec17448761"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_App.PosterViewController.data.setter : Swift.String"
+                  moduleName = "Movie_App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yebin/Desktop/Project/Movie_App/Movie_App/Movie_App/PosterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "B7F8DAF0-F888-4D33-AE27-62FBFCEDFB93 - df41d096b46ca370"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_App.PosterViewController.data.modify : Swift.String"
+                  moduleName = "Movie_App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yebin/Desktop/Project/Movie_App/Movie_App/Movie_App/PosterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "B7F8DAF0-F888-4D33-AE27-62FBFCEDFB93 - bfe046a2e18ec361"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_App.PosterViewController.data.modify : Swift.String with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Movie_App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yebin/Desktop/Project/Movie_App/Movie_App/Movie_App/PosterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "B7F8DAF0-F888-4D33-AE27-62FBFCEDFB93 - 37c99f96e3bb0912"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_App.PosterViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Movie_App.PosterViewController"
+                  moduleName = "Movie_App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yebin/Desktop/Project/Movie_App/Movie_App/Movie_App/PosterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "524">
+               </Location>
+               <Location
+                  uuid = "B7F8DAF0-F888-4D33-AE27-62FBFCEDFB93 - 4b93b0087dade009"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_App.PosterViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Movie_App.PosterViewController&gt;"
+                  moduleName = "Movie_App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yebin/Desktop/Project/Movie_App/Movie_App/Movie_App/PosterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "500">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
