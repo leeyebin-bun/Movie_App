@@ -7,6 +7,6 @@
 
 import UIKit
 
-class MovieList: NSObject {
+class MovieList: Object {
 
 }
