@@ -44,7 +44,7 @@ class CreateViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         guard let vc = self.storyboard?.instantiateViewController(identifier:  "PosterViewController") as? PosterViewController else { return }
         
-        vc.dataDelegate = self
+        //vc.dataDelegate = self
         self.navigationController?.pushViewController(vc, animated: true)
         
         // PosterView 로 이동

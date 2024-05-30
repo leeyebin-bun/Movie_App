@@ -21,7 +21,7 @@ class PosterViewController: UIViewController {
     @IBOutlet weak var posterButton: UIButton!
     
     var data : String = ""
-    var dataDelegate : SendDataDelegate?
+    // var dataDelegate : SendDataDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,7 @@ class PosterViewController: UIViewController {
         self.posterCellView_3.layer.cornerRadius = 15
          
         self.titleText.text = data
-        dataDelegate?.recieveData(response: "delegate works well~")
+        //dataDelegate?.recieveData(response: "delegate works well~")
         self.navigationController?.popViewController(animated: true)
     }
     
