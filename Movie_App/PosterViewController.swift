@@ -8,6 +8,8 @@
 import UIKit
 import RealmSwift
 
+//푸쉬테스트중
+
 class PosterViewController: UIViewController {
     
     @IBOutlet weak var targetButton: UIButton!
