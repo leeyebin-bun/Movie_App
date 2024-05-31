@@ -5,8 +5,9 @@
 //  Created by 이예빈 on 5/31/24.
 //
 
-import UIKit
+import RealmSwift
 
-class Model: NSObject {
-
+class Model: Object {
+    @objc dynamic var name: String = ""
+    @objc dynamic var age : Int = 0
 }

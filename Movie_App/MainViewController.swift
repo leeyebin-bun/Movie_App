@@ -1,12 +1,44 @@
-//
-//  ViewController.swift
-//  Movie_App
-//
-//  Created by 이예빈 on 2024/05/14.
-//
 
 import UIKit
 import RealmSwift
+import SwiftUI
+import SplineRuntime
+
+/*
+struct ContentView: View {
+    var body: some View {
+        VStack{
+            //3D
+            Header()
+                .frame(height: 500)
+            
+            VStack(spacing:30)
+            {
+                Text("Welcome")
+                    .bold()
+                Button("Start")
+                {
+                    
+                }
+            }
+            Spacer()
+        }
+    }
+}
+
+struct Header:View {
+    var body: some View {
+        let url = URL(string: "https://build.spline.design/JlziB7XG8zYuLskwh5lq/scene.splineswift")!
+        
+        try? SplineView(sceneFileURL: url).ignoresSafeArea(.all)
+    }
+}
+
+
+#Preview {
+    ContentView()
+}
+*/
 
 class MainViewController: UIViewController {
 
@@ -14,9 +46,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        //버튼 폰트 크기,굵기,넓이
+        self.startButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .bold, width: .standard)
         
-        //크기 굵기 넓이
-        self.startButton.titleLabel?.font = UIFont.systemFont(ofSize: 10, weight: .bold, width: .standard)
         //저장할 데이터 생성
         let user = Model()
         user.name = "yebong"
@@ -37,7 +70,9 @@ class MainViewController: UIViewController {
         //데이터 가져오기
         let myUser = realm.objects(Model.self).filter("name == 'yebong'").first
         //print("myUsers",myUser!)
-        //self.view.backgroundColor = .systemBackground // IOS 다크모드 / 라이트모드 적용
+        
+        //IOS 다크모드 / 라이트모드 적용
+        //self.view.backgroundColor = .systemBackground
        
     }
 

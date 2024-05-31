@@ -42,7 +42,7 @@ class CreateViewController: UIViewController, UIImagePickerControllerDelegate, U
      */
     @IBAction func OnClickDoneButton(_ sender: Any) {
         
-        guard let vc = self.storyboard?.instantiateViewController(identifier:  "PosterViewController") as? PosterViewController else { return }
+        guard let vc = self.storyboard?.instantiateViewController(identifier: "PosterViewController") as? PosterViewController else { return }
         
         //vc.dataDelegate = self
         self.navigationController?.pushViewController(vc, animated: true)

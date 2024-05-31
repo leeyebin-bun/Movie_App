@@ -9,15 +9,18 @@
 /* Begin PBXBuildFile section */
 		481C43CE2BF37062004B8D52 /* PosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481C43CD2BF37062004B8D52 /* PosterViewController.swift */; };
 		481C43D42BFDF62E004B8D52 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481C43D32BFDF62E004B8D52 /* CreateViewController.swift */; };
+		4848B9782C0A403E0001023C /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4848B9772C0A403E0001023C /* ContentViewController.swift */; };
 		488C942D2BF30DC8004A1E41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C942C2BF30DC8004A1E41 /* AppDelegate.swift */; };
 		488C942F2BF30DC8004A1E41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C942E2BF30DC8004A1E41 /* SceneDelegate.swift */; };
-		488C94312BF30DC8004A1E41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C94302BF30DC8004A1E41 /* ViewController.swift */; };
+		488C94312BF30DC8004A1E41 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C94302BF30DC8004A1E41 /* MainViewController.swift */; };
 		488C94342BF30DC8004A1E41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 488C94322BF30DC8004A1E41 /* Main.storyboard */; };
 		488C94362BF30DCA004A1E41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 488C94352BF30DCA004A1E41 /* Assets.xcassets */; };
 		488C94392BF30DCA004A1E41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 488C94372BF30DCA004A1E41 /* LaunchScreen.storyboard */; };
 		488C94442BF30DCA004A1E41 /* Movie_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C94432BF30DCA004A1E41 /* Movie_AppTests.swift */; };
 		488C944E2BF30DCA004A1E41 /* Movie_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C944D2BF30DCA004A1E41 /* Movie_AppUITests.swift */; };
 		488C94502BF30DCA004A1E41 /* Movie_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C944F2BF30DCA004A1E41 /* Movie_AppUITestsLaunchTests.swift */; };
+		48A06D502C0974FF00123B18 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A06D4F2C0974FF00123B18 /* Model.swift */; };
+		48A06D532C09BC4500123B18 /* SplineRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 48A06D522C09BC4500123B18 /* SplineRuntime */; };
 		BABF099C25A6408F4CB6C623 /* Pods_Movie_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5AD1BC6709DCD237F425AC /* Pods_Movie_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,10 +44,11 @@
 /* Begin PBXFileReference section */
 		481C43CD2BF37062004B8D52 /* PosterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterViewController.swift; sourceTree = "<group>"; };
 		481C43D32BFDF62E004B8D52 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		4848B9772C0A403E0001023C /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		488C94292BF30DC8004A1E41 /* Movie_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movie_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		488C942C2BF30DC8004A1E41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		488C942E2BF30DC8004A1E41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		488C94302BF30DC8004A1E41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		488C94302BF30DC8004A1E41 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		488C94332BF30DC8004A1E41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		488C94352BF30DCA004A1E41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		488C94382BF30DCA004A1E41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 		488C94492BF30DCA004A1E41 /* Movie_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Movie_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		488C944D2BF30DCA004A1E41 /* Movie_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_AppUITests.swift; sourceTree = "<group>"; };
 		488C944F2BF30DCA004A1E41 /* Movie_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		48A06D4F2C0974FF00123B18 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5B5AD1BC6709DCD237F425AC /* Pods_Movie_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA4FEDB28BF0FFEC3CA4AA54 /* Pods-Movie_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie_App.debug.xcconfig"; path = "Target Support Files/Pods-Movie_App/Pods-Movie_App.debug.xcconfig"; sourceTree = "<group>"; };
 		F96F1112215C56534D37A118 /* Pods-Movie_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie_App.release.xcconfig"; path = "Target Support Files/Pods-Movie_App/Pods-Movie_App.release.xcconfig"; sourceTree = "<group>"; };
@@ -64,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48A06D532C09BC4500123B18 /* SplineRuntime in Frameworks */,
 				BABF099C25A6408F4CB6C623 /* Pods_Movie_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,7 +97,6 @@
 				AA4FEDB28BF0FFEC3CA4AA54 /* Pods-Movie_App.debug.xcconfig */,
 				F96F1112215C56534D37A118 /* Pods-Movie_App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -122,13 +127,15 @@
 			children = (
 				488C942C2BF30DC8004A1E41 /* AppDelegate.swift */,
 				488C942E2BF30DC8004A1E41 /* SceneDelegate.swift */,
-				488C94302BF30DC8004A1E41 /* ViewController.swift */,
+				488C94302BF30DC8004A1E41 /* MainViewController.swift */,
 				481C43CD2BF37062004B8D52 /* PosterViewController.swift */,
 				481C43D32BFDF62E004B8D52 /* CreateViewController.swift */,
+				48A06D4F2C0974FF00123B18 /* Model.swift */,
 				488C94322BF30DC8004A1E41 /* Main.storyboard */,
 				488C94352BF30DCA004A1E41 /* Assets.xcassets */,
 				488C94372BF30DCA004A1E41 /* LaunchScreen.storyboard */,
 				488C943A2BF30DCA004A1E41 /* Info.plist */,
+				4848B9772C0A403E0001023C /* ContentViewController.swift */,
 			);
 			path = Movie_App;
 			sourceTree = "<group>";
@@ -176,6 +183,9 @@
 			dependencies = (
 			);
 			name = Movie_App;
+			packageProductDependencies = (
+				48A06D522C09BC4500123B18 /* SplineRuntime */,
+			);
 			productName = Movie_App;
 			productReference = 488C94292BF30DC8004A1E41 /* Movie_App.app */;
 			productType = "com.apple.product-type.application";
@@ -248,6 +258,9 @@
 				Base,
 			);
 			mainGroup = 488C94202BF30DC8004A1E41;
+			packageReferences = (
+				48A06D512C09BBD600123B18 /* XCRemoteSwiftPackageReference "spline-ios" */,
+			);
 			productRefGroup = 488C942A2BF30DC8004A1E41 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -335,9 +348,11 @@
 			files = (
 				481C43D42BFDF62E004B8D52 /* CreateViewController.swift in Sources */,
 				481C43CE2BF37062004B8D52 /* PosterViewController.swift in Sources */,
-				488C94312BF30DC8004A1E41 /* ViewController.swift in Sources */,
+				488C94312BF30DC8004A1E41 /* MainViewController.swift in Sources */,
+				48A06D502C0974FF00123B18 /* Model.swift in Sources */,
 				488C942D2BF30DC8004A1E41 /* AppDelegate.swift in Sources */,
 				488C942F2BF30DC8004A1E41 /* SceneDelegate.swift in Sources */,
+				4848B9782C0A403E0001023C /* ContentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +690,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		48A06D512C09BBD600123B18 /* XCRemoteSwiftPackageReference "spline-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/splinetool/spline-ios";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		48A06D522C09BC4500123B18 /* SplineRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48A06D512C09BBD600123B18 /* XCRemoteSwiftPackageReference "spline-ios" */;
+			productName = SplineRuntime;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 488C94212BF30DC8004A1E41 /* Project object */;
 }
