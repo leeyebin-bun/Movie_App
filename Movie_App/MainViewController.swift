@@ -34,16 +34,12 @@ struct MenuBar: View {
                     
                 }) {
                     Text("Note")
-                        //.frame(width: 200)
                         .foregroundColor(.black)
                         .font(.system(size: 13))
                         .bold()
-                        //.padding()
                         .padding(.leading, 40)
-                    Spacer()
                 }
-                
-               //Spacer()
+                Spacer()
                 
                 Button(action: {
                     // 버튼 액션
