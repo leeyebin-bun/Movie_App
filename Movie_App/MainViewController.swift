@@ -5,6 +5,63 @@ import SwiftUI
 import SplineRuntime
 
 
+struct MainView: View {
+    var body: some View {
+        ZStack{
+            Color.black
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack{
+                MenuBar()
+                .padding()
+                Spacer()
+            }
+        }
+    }
+}
+
+struct MenuBar: View {
+    var body: some View {
+        ZStack {
+            // 배경색 설정
+            Color(red: 191/255, green: 255/255, blue: 0/255)
+                .frame(width: 330 , height: 45)
+                .cornerRadius(13)
+                
+            HStack {
+                Button(action: {
+                    // 버튼 액션
+                    
+                }) {
+                    Text("Note")
+                        //.frame(width: 200)
+                        .foregroundColor(.black)
+                        .font(.system(size: 13))
+                        .bold()
+                        //.padding()
+                        .padding(.leading, 40)
+                    Spacer()
+                }
+                
+               //Spacer()
+                
+                Button(action: {
+                    // 버튼 액션
+                    
+                }) {
+                    Text("...")
+                        .foregroundColor(.black)
+                        .font(.system(size: 15))
+                        .bold()
+                        .padding(.trailing, 40)
+                }
+            }
+            .padding(.vertical, 20)
+        }
+    }
+}
+
+/*
 class MainViewController: UIViewController {
 
     @IBOutlet weak var startButton: UIButton!
@@ -41,5 +98,10 @@ class MainViewController: UIViewController {
        
     }
 
+}
+*/
+
+#Preview {
+    MainView()
 }
 
