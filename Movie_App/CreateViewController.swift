@@ -7,8 +7,9 @@ struct CreateView: View {
     @State private var isDatePickerVisible = false
     @State private var selectedDate = Date()
     @State private var title = ""
-    @State private var name = ""
+    @State private var time = ""
     @State private var note = ""
+    @State private var photo = ""
     
     var body: some View {
         NavigationView {
@@ -16,6 +17,7 @@ struct CreateView: View {
                 Color.black
                     .edgesIgnoringSafeArea(.all)
                 
+                //Header
                 VStack {
                     Button(action: {
                         isDatePickerVisible = true
@@ -30,46 +32,107 @@ struct CreateView: View {
                     
                     Spacer()
                 }
-            
-                VStack(spacing: 100) {
-                    ZStack {
+                
+                //Body
+                VStack(spacing: 60) {
+                    VStack {
                         RoundedRectangle(cornerRadius: 30)
                             .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
                             .frame(width: 60, height: 25)
-                        Text("title")
-                            .foregroundColor(.black)
+                            .overlay(
+                                Text("Title")
+                                    .foregroundColor(.black)
+                            )
+                            .padding(.trailing, 300)
+                        
+                        TextField("title", text: $title)
+                            .foregroundColor(.white)
+                            .onChange(of: title) { titleText in
+                                if titleText.count > 10 {
+                                    title = String(titleText.prefix(20)) // 제목 최대글자수 20자
+                                }
+                            }
+                        
+                        ZStack() {
+                            // 밑줄
+                            Rectangle()
+                                .frame(width: 350 ,height: 2)
+                                .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
+                        }
                     }
-                    .padding(.leading, 30) // 왼쪽 마진 추가
-
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 30)
-                            .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
-                            .frame(width: 60, height: 25)
-                        Text("time")
-                            .foregroundColor(.black)
+                    
+                    VStack(spacing: 60) {
+                        VStack {
+                            RoundedRectangle(cornerRadius: 30)
+                                .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
+                                .frame(width: 60, height: 25)
+                                .overlay(
+                                    Text("Time")
+                                        .foregroundColor(.black)
+                                )
+                                .padding(.trailing, 300)
+                            
+                            TextField("time", text: $time)
+                                .foregroundColor(.white)
+                                .onChange(of: time) { timeText in
+                                    if timeText.count > 10 {
+                                        time = String(timeText.prefix(20)) // 제목 최대글자수 20자
+                                    }
+                                }
+                            
+                            ZStack() {
+                                // 밑줄
+                                Rectangle()
+                                    .frame(width: 350 ,height: 2)
+                                    .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
+                            }
+                        }
                     }
-                    .padding(.leading, 30) // 왼쪽 마진 추가
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 30)
-                            .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
-                            .frame(width: 60, height: 25)
-                        Text("note")
-                            .foregroundColor(.black)
+                    VStack(spacing: 60) {
+                        VStack {
+                            RoundedRectangle(cornerRadius: 30)
+                                .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
+                                .frame(width: 60, height: 25)
+                                .overlay(
+                                    Text("Note")
+                                        .foregroundColor(.black)
+                                )
+                                .padding(.trailing, 300)
+                            
+                            TextField("note", text: $note)
+                                .foregroundColor(.white)
+                                .onChange(of: note) { noteText in
+                                    if noteText.count > 10 {
+                                        note = String(noteText.prefix(20)) // 제목 최대글자수 20자
+                                    }
+                                }
+                            
+                            ZStack() {
+                                // 밑줄
+                                Rectangle()
+                                    .frame(width: 350 ,height: 2)
+                                    .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
+                            }
+                        }
                     }
-                    .padding(.leading, 30) // 왼쪽 마진 추가
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 30)
-                            .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
-                            .frame(width: 60, height: 25)
-                        Text("photo")
-                            .foregroundColor(.black)
+                    VStack(spacing: 60) {
+                        VStack {
+                            RoundedRectangle(cornerRadius: 30)
+                                .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
+                                .frame(width: 60, height: 25)
+                                .overlay(
+                                    Text("Photo")
+                                        .foregroundColor(.black)
+                                )
+                                .padding(.trailing, 300)
+                        }
                     }
-                    .padding(.leading, 30) // 왼쪽 마진 추가
                 }
-                .padding(.bottom , 150)
-                .frame(maxWidth: .infinity, alignment: .leading) // 내부 요소의 정렬을 왼쪽으로
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.black.edgesIgnoringSafeArea(.all))
             }
-            //.frame(maxWidth: .infinity, alignment: .leading) // 최대 너비 지정
+            
         }
     }
     
