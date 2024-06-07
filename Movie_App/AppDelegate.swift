@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
         
+        // Realm Configuration 설정
+        let config = Realm.Configuration(
+            schemaVersion: 2, // 현재 사용하는 스키마 버전으로 변경
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {
+                    // MyDataModel 클래스의 'id' 속성 추가
+                    migration.enumerateObjects(ofType: MyDataModel.className()) { oldObject, newObject in
+                        newObject!["id"] = UUID().uuidString // 새로운 기본 키 값 할당
+                    }
+                }
+            })
+
+        Realm.Configuration.defaultConfiguration = config
+        
+        print("realm 위치: ", Realm.Configuration.defaultConfiguration.fileURL!)
         // LaunchScreen 딜레이 시간 설정
         //sleep(1)
         return true
