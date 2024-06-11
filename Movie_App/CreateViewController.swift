@@ -6,6 +6,7 @@ import SwiftUI
 class MyDataModel: Object , Identifiable {
     @Persisted var titleText: String = ""
     @Persisted var timeText: String = ""
+    @Persisted var imageData: Data?
 }
 
 struct CreateView: View {
