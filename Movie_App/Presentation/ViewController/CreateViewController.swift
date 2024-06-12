@@ -6,7 +6,7 @@ import SwiftUI
 class MyDataModel: Object , Identifiable {
     @Persisted var titleText: String = ""
     @Persisted var timeText: String = ""
-    @Persisted var imageData: Data?
+    //@Persisted var imageData: Data?
 }
 
 struct CreateView: View {
@@ -18,25 +18,25 @@ struct CreateView: View {
     @State private var photo = ""
     
     @Environment(\.presentationMode) var presentationMode
-
-   
+    
+    
     let realm = try! Realm() // Realm 인스턴스 생성
-
-        // 새로운 데이터 저장 함수
-        func saveData() {
-            let data = MyDataModel()
-            data.titleText = title
-            data.timeText = time
-
-            do {
-                try realm.write {
-                    realm.add(data) // Realm에 데이터 저장
-                }
-                presentationMode.wrappedValue.dismiss()
-            } catch {
-                print("저장 안됐시요 \(error)")
+    
+    // 새로운 데이터 저장 함수
+    func saveData() {
+        let data = MyDataModel()
+        data.titleText = title
+        data.timeText = time
+        
+        do {
+            try realm.write {
+                realm.add(data) // Realm에 데이터 저장
             }
+            presentationMode.wrappedValue.dismiss()
+        } catch {
+            print("저장 안됐시요 \(error)")
         }
+    }
     
     var body: some View {
         NavigationView {
@@ -46,16 +46,31 @@ struct CreateView: View {
                 
                 // Header
                 VStack {
-                    Button(action: {
-                        isDatePickerVisible = true
-                    }) {
-                        Text(dateFormatter.string(from: selectedDate))
-                            .padding()
-                            .foregroundColor(.white)
+                    HStack {
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .foregroundColor(.white)
+                                .padding()
+                        }
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            isDatePickerVisible = true
+                        }) {
+                            Text(dateFormatter.string(from: selectedDate))
+                                .padding()
+                                .foregroundColor(.white)
+                        }
+                        .sheet(isPresented: $isDatePickerVisible) {
+                            datePickerView
+                        }
+                        Spacer()
+
                     }
-                    .sheet(isPresented: $isDatePickerVisible) {
-                        datePickerView
-                    }
+                    .padding()
                     
                     Spacer()
                 }
@@ -113,7 +128,7 @@ struct CreateView: View {
                                 .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
                         }
                     }
-
+                    
                     VStack {
                         RoundedRectangle(cornerRadius: 30)
                             .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
@@ -139,7 +154,7 @@ struct CreateView: View {
                                 .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
                         }
                     }
-
+                    
                     VStack {
                         RoundedRectangle(cornerRadius: 30)
                             .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))

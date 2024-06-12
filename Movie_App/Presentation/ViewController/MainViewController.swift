@@ -20,7 +20,7 @@ class ViewModel: ObservableObject {
 
 struct MainView: View {
     @State private var isCreateViewPresented = false
-   
+    
     var body: some View {
         ZStack{
             Color.black
@@ -28,7 +28,7 @@ struct MainView: View {
             
             VStack{
                 MenuBar(isCreateViewPresented: $isCreateViewPresented)
-                .padding()
+                    .padding()
                 Spacer()
             }
         }
@@ -50,7 +50,6 @@ struct MenuBar: View {
             
             HStack {
                 Button(action: {
-                    // 버튼 액션
                     
                 }) {
                     Text("Note")
@@ -75,15 +74,7 @@ struct MenuBar: View {
         .sheet(isPresented: $isCreateViewPresented) {
             CreateView()
         }
-        /*
-         HStack {
-         
-         Color.gray
-         .opacity(0.3)
-         .frame(width: 330 , height: 200)
-         .cornerRadius(13)
-         }
-         */
+
         ScrollView(.vertical, showsIndicators: false) {
             LazyVGrid(columns: [
                 GridItem(.adaptive(minimum: 220), spacing: 20)
@@ -101,7 +92,7 @@ struct MenuBar: View {
                                     Text(task.timeText)
                                         .foregroundColor(.white)
                                 }
-                                .padding()
+                                    .padding()
                             )
                             .padding()
                     }
