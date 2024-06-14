@@ -1,12 +1,27 @@
-//
-//  MovieDataModel.swift
-//  Movie_App
-//
-//  Created by 이예빈 on 6/13/24.
-//
+import RealmSwift
+import SwiftUI
 
-import UIKit
-
-class MovieDataModel: NSObject {
-
+class MyDataViewModel: ObservableObject {
+    private let realm = try! Realm()
+    @Published var tasks: Results<MyDataModel>?
+    
+    init() {
+        getRealmData()
+    }
+    
+    func getRealmData() {
+        tasks = realm.objects(MyDataModel.self).sorted(byKeyPath: "titleText", ascending: false)
+    }
+    
+    func saveData(titleText: String, timeText: String) {
+        let data = MyDataModel(titleText: titleText, timeText: timeText)
+        do {
+            try realm.write {
+                realm.add(data)
+            }
+            getRealmData()
+        } catch {
+            print("Error saving data: \(error)")
+        }
+    }
 }

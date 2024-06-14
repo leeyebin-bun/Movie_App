@@ -14,15 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // 프로그램이 실행될 준비가 모두 완료되면 true를 반환
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
-        
-        // Realm Configuration 설정
         let config = Realm.Configuration(
-            schemaVersion: 2, // 현재 사용하는 스키마 버전으로 변경
+            schemaVersion: 2, // 현재 스키마 버전
             migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 1) {
-                    // MyDataModel 클래스의 'id' 속성 추가
+                // 마이그레이션 필요 시 처리
+                if oldSchemaVersion < 2 {
+                    // 예시: 필요한 마이그레이션 작업 수행
                     migration.enumerateObjects(ofType: MyDataModel.className()) { oldObject, newObject in
-                        newObject!["id"] = UUID().uuidString // 새로운 기본 키 값 할당
+                        newObject!["id"] = UUID().uuidString // 예시 마이그레이션 코드
                     }
                 }
             })

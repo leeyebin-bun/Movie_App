@@ -43,8 +43,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
          CreateViewController else { return }
          
          window?.rootViewController = mainVC
-         */
-        
+         
+        */
         //SwiftUI 와 UIKit 혼합으로 사용 (UIHostingController)
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
