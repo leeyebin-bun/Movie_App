@@ -7,15 +7,14 @@ struct CreateView: View {
     @State private var title = ""
     @State private var time = ""
     @State private var date = Date()
-    // @State private var photo: Data? = nil
-    
+   
     var body: some View {
         NavigationView {
             Form {
                 TextField("Title", text: $title)
                 TextField("Time", text: $time)
                 DatePicker("Select Date", selection: $date, displayedComponents: .date)
-                
+
                 Button("Save") {
                     viewModel.saveData(titleText: title, timeText: time, dateText: date)
                     presentationMode.wrappedValue.dismiss()

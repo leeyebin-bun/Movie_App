@@ -56,10 +56,9 @@ struct MainView: View {
                             .clipShape(Circle())
                     }
                     .sheet(isPresented: $isCreateViewPresented) {
-                        CreateView(viewModel: viewModel)
+                        CreateBGView(viewModel: viewModel)
                     }
                 }
-                .navigationTitle("Tasks")
                 .onAppear {
                     viewModel.getRealmData()
                 }
