@@ -10,11 +10,15 @@ class MyDataModel: Object, Identifiable {
     @Persisted var titleText: String = ""
     @Persisted var timeText: String = ""
     @Persisted var dateText: Date?
+    @Persisted var kindText: String = ""
+    @Persisted var famousLineText: String = ""
     
-    convenience init(titleText: String, timeText: String, dateText: Date) {
+    convenience init(titleText: String, timeText: String, dateText: Date, kindText: String, famousLineText: String) {
         self.init()
         self.titleText = titleText
         self.timeText = timeText
         self.dateText = dateText
+        self.kindText = kindText
+        self.famousLineText = famousLineText
     }
 }

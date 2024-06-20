@@ -34,6 +34,12 @@ struct MainView: View {
                                                     Text(formatDate(task.dateText))
                                                         .font(.subheadline)
                                                         .foregroundColor(.white)
+                                                    Text(task.kindText)
+                                                        .font(.headline)
+                                                        .foregroundColor(.white)
+                                                    Text(task.famousLineText)
+                                                        .font(.headline)
+                                                        .foregroundColor(.white)
                                                     
                                                 }
                                                     .padding()

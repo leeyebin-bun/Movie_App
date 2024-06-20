@@ -13,8 +13,8 @@ class MyDataViewModel: ObservableObject {
         tasks = realm.objects(MyDataModel.self).sorted(byKeyPath: "titleText", ascending: false)
     }
     
-    func saveData(titleText: String, timeText: String, dateText: Date) {
-        let data = MyDataModel(titleText: titleText, timeText: timeText, dateText: dateText)
+    func saveData(titleText: String, timeText: String, dateText: Date, kindText: String, famousLineText: String) {
+        let data = MyDataModel(titleText: titleText, timeText: timeText, dateText: dateText, kindText: kindText, famousLineText: famousLineText)
         
         do {
             try realm.write {
