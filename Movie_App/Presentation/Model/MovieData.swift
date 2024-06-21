@@ -27,9 +27,10 @@ class ImageData: Identifiable {
     var id = UUID()
     var rating: Int
     var imageName: String
-    
+
     init(imageName: String, rating: Int) {
         self.rating = rating
         self.imageName = imageName
     }
 }
+

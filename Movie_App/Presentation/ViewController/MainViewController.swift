@@ -5,6 +5,7 @@ struct MainView: View {
     @ObservedObject private var viewModel = MyDataViewModel()
     @State private var isCreateViewPresented = false
     @State private var isPosterViewPresented = false
+    @State private var selectedImageData: ImageData?
     
     var body: some View {
         NavigationView {
@@ -16,15 +17,22 @@ struct MainView: View {
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
-                            ForEach(viewModel.images) { imageData in
-                                ImageButton(imageName: "Th\(imageData.rating + 1)", action: {
+                            ForEach(viewModel.images, id: \.id) { imageData in
+                                ImageButton(imageData: imageData) {
+                                    selectedImageData = imageData
                                     isPosterViewPresented = true
-                                })
+                                }
+                                .padding(5)
+                                .cornerRadius(15)
                             }
                         }
-                        .padding(20) // 그리드 가로 여백
+                        .padding(20)
                     }
-                    
+                    .sheet(isPresented: $isPosterViewPresented) {
+                        if let imageData = selectedImageData {
+                            PosterView(imageData: imageData)
+                        }
+                    }
                     Button(action: {
                         isCreateViewPresented.toggle()
                     }) {
@@ -77,16 +85,16 @@ struct HeaderView: View {
 
 // ImageButton 컴포넌트
 struct ImageButton: View {
-    var imageName: String
+    var imageData: ImageData
     var action: () -> Void
     
     var body: some View {
         Button(action: action) {
             VStack {
                 GeometryReader { geometry in
-                    Image(imageName)
+                    Image(imageData.imageName)
                         .resizable()
-                        .aspectRatio(1.0, contentMode: .fill)
+                        .aspectRatio(contentMode: .fill)
                         .frame(width: geometry.size.width, height: geometry.size.width)
                         .clipShape(RoundedRectangle(cornerRadius: 13))
                         .overlay(
@@ -94,9 +102,9 @@ struct ImageButton: View {
                                 .stroke(Color.black.opacity(0.5), lineWidth: 1)
                         )
                 }
-                .frame(height: 160) // 원하는 크기로 고정
+                .frame(height: 160)
             }
-            .padding(5) // 그리드 세로 여백
+            .padding(5)
             .cornerRadius(15)
         }
         .buttonStyle(PlainButtonStyle())

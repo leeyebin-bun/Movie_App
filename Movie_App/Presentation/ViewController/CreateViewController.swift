@@ -1,6 +1,7 @@
 import SwiftUI
 import RealmSwift
 
+
 struct CreateView: View {
     @ObservedObject var viewModel: MyDataViewModel
     @Environment(\.presentationMode) var presentationMode
@@ -17,7 +18,7 @@ struct CreateView: View {
         NavigationView {
             ZStack{
                 //Color.black
-                //   .edgesIgnoringSafeArea(.all)
+                 // .edgesIgnoringSafeArea(.all)
                 
                 VStack{
                     HStack(spacing: 10) {
@@ -52,14 +53,15 @@ struct CreateView: View {
                     }
                     Spacer()
                     
-                    .navigationBarItems(trailing: Button("Cancel") {
-                        presentationMode.wrappedValue.dismiss()
-                    })
+                        .navigationBarItems(trailing: Button("Cancel") {
+                            presentationMode.wrappedValue.dismiss()
+                        })
                 }
             }
         }
     }
 }
+
 
 #Preview {
     CreateView(viewModel: MyDataViewModel())

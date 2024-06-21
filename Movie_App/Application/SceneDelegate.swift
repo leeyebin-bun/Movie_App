@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import RealmSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -45,7 +46,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
          window?.rootViewController = mainVC
          
         */
-        //SwiftUI 와 UIKit 혼합으로 사용 (UIHostingController)
+        
+        // Realm 초기화 및 기본 설정
+        // Realm Configuration 설정
+        let realmConfig = Realm.Configuration(
+            schemaVersion: 2, // 최신 스키마 버전
+            migrationBlock: { migration, oldSchemaVersion in
+                if oldSchemaVersion < 2 {
+                    // 이전 데이터베이스 스키마에서 새로운 데이터베이스 스키마로 마이그레이션 수행
+                    // migration.enumerateObjects(ofType:...) 등의 메서드를 사용하여 필요한 마이그레이션 작업을 수행
+                }
+            })
+
+        // Realm Configuration을 기본으로 설정
+        Realm.Configuration.defaultConfiguration = realmConfig
+        
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             let contentView = ContentView()

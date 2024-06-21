@@ -11,13 +11,14 @@ class MyDataViewModel: ObservableObject {
         do {
             self.realm = try Realm()
             self.images = [
-                ImageData(imageName: "Th1", rating: 0),
-                ImageData(imageName: "Th2", rating: 1),
-                ImageData(imageName: "Th3", rating: 2),
-                ImageData(imageName: "Th4", rating: 3),
-                ImageData(imageName: "Th5", rating: 4),
-                ImageData(imageName: "Th6", rating: 5)
-            ]
+                        ImageData(imageName: "Th1", rating: 0),
+                        ImageData(imageName: "Th2", rating: 1),
+                        ImageData(imageName: "Th3", rating: 2),
+                        ImageData(imageName: "Th4", rating: 3),
+                        ImageData(imageName: "Th5", rating: 4),
+                        ImageData(imageName: "Th6", rating: 5)
+                    ]
+        
         } catch {
             fatalError("Failed to open Realm: \(error.localizedDescription)")
         }

@@ -5,6 +5,7 @@ struct PosterView: View {
     @ObservedObject private var viewModel = MyDataViewModel()
     @State private var isCreateViewPresented = false
     @State private var isPosterViewPresented = false
+    var imageData: ImageData
     
     var body: some View {
         NavigationView {
@@ -86,9 +87,5 @@ func PosterformatDate(_ date: Date?) -> String {
     dateFormatter.dateFormat = "yyyy-MM-dd"
     
     return dateFormatter.string(from: date)
-}
-
-#Preview {
-    PosterView()
 }
 
