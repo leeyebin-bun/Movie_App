@@ -2,7 +2,7 @@ import SwiftUI
 import RealmSwift
 
 struct CreateBGView : View {
-    @ObservedObject var viewModel: MyDataViewModel
+    @ObservedObject private var viewModel = MyDataViewModel()
     @State private var isPresented = false
     
     var body: some View {
@@ -25,7 +25,7 @@ struct CreateBGView : View {
                             
                         }
                         .sheet(isPresented: $isPresented) {
-                            CreateView(viewModel: MyDataViewModel())
+                            MainImageView(viewModel: viewModel)
                         }
                         Button(action: {
                             // 아직 하나만 열어둘게용 ..
@@ -47,5 +47,5 @@ struct CreateBGView : View {
 }
 
 #Preview {
-    CreateBGView(viewModel: MyDataViewModel())
+    CreateBGView()
 }

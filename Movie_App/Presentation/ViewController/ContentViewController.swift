@@ -38,7 +38,7 @@ struct ContentView: View {
                     }
                     //MainView 로 이동
                     .sheet(isPresented: $isPresented) {
-                        MainImageView()
+                        CreateBGView()
                         
                     }
                     .padding()

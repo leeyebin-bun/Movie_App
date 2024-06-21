@@ -2,7 +2,7 @@ import SwiftUI
 import RealmSwift
 
 struct PosterView: View {
-    @StateObject private var viewModel = MyDataViewModel()
+    @ObservedObject private var viewModel = MyDataViewModel()
     @State private var isCreateViewPresented = false
     @State private var isPosterViewPresented = false
     
@@ -65,7 +65,7 @@ struct PosterView: View {
                             .clipShape(Circle())
                     }
                     .sheet(isPresented: $isCreateViewPresented) {
-                        CreateBGView(viewModel: viewModel)
+                        CreateView(viewModel: viewModel)
                     }
                 }
                 .onAppear {

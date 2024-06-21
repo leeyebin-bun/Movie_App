@@ -2,7 +2,8 @@ import SwiftUI
 import RealmSwift
 
 struct MainImageView: View {
-    @StateObject private var viewModel = MyDataViewModel()
+    @ObservedObject var viewModel = MyDataViewModel()
+    @State private var isCreateViewPresented = false
     @State private var isPresented = false
     
     let planetImage = ["1","2","3","4","5","6","7","8","9","10"]
@@ -54,6 +55,18 @@ struct MainImageView: View {
                         }
                         else{
                             Text("Loading...")
+                        }
+                        Button(action: {
+                            isCreateViewPresented.toggle()
+                        }) {
+                            Image(systemName: "plus")
+                                .foregroundColor(.black)
+                                .padding()
+                                .background(Color(red: 191/255, green: 255/255, blue: 0/255))
+                                .clipShape(Circle())
+                        }
+                        .sheet(isPresented: $isCreateViewPresented) {
+                            CreateView(viewModel: viewModel)
                         }
                     }
                     .onAppear {

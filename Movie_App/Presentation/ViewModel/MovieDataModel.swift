@@ -4,11 +4,20 @@ class MyDataViewModel: ObservableObject {
     private var realm: Realm
 
     @Published var tasks: Results<MyDataModel>?
+    @Published var images: [ImageData] = []
     
     init() {
         // Realm 인스턴스 초기화
         do {
             self.realm = try Realm()
+            self.images = [
+                ImageData(imageName: "Th1", rating: 0),
+                ImageData(imageName: "Th2", rating: 1),
+                ImageData(imageName: "Th3", rating: 2),
+                ImageData(imageName: "Th4", rating: 3),
+                ImageData(imageName: "Th5", rating: 4),
+                ImageData(imageName: "Th6", rating: 5)
+            ]
         } catch {
             fatalError("Failed to open Realm: \(error.localizedDescription)")
         }
