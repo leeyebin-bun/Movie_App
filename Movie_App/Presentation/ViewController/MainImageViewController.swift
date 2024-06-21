@@ -13,7 +13,7 @@ struct MainImageView: View {
                 ZStack {
                     //Color.black
                     //.edgesIgnoringSafeArea(.all)
-                    Image("BG_2")
+                    Image("BG_3")
                         .resizable()
                         .edgesIgnoringSafeArea(.all)
                     VStack {
@@ -21,7 +21,7 @@ struct MainImageView: View {
                             .fill(Color(red: 191/255, green: 255/255, blue: 0/255))
                             .frame(width: 330, height: 50)
                             .overlay(
-                                VStack {
+                                HStack(spacing:100) {
                                     Button(action: {
                                         isPresented = true
                                     }) {
@@ -30,6 +30,12 @@ struct MainImageView: View {
                                     }
                                     .sheet(isPresented: $isPresented) {
                                         MainView()
+                                    }
+                                    Button(action: {
+                                        
+                                    }) {
+                                        Image(systemName: "house")
+                                            .foregroundColor(.black)
                                     }
                                 }
                             )
@@ -45,6 +51,9 @@ struct MainImageView: View {
                                     .position(x:randomX , y:randomY)
                             }
                             Spacer()
+                        }
+                        else{
+                            Text("Loading...")
                         }
                     }
                     .onAppear {

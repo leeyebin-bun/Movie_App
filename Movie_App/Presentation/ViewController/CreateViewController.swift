@@ -10,28 +10,53 @@ struct CreateView: View {
     @State private var date = Date()
     @State private var kind = ""
     @State private var famousLine = ""
-   
+    @State private var rating: Int = 0
+    
+    
     var body: some View {
         NavigationView {
-            Form {
-                TextField("Title", text: $title)
-                TextField("Time", text: $time)
-                TextField("kind", text: $kind)
-                DatePicker("Select Date", selection: $date, displayedComponents: .date)
-                TextField("famousLine", text: $famousLine)
-                Button("Save") {
-                    isPresented = true
-                    viewModel.saveData(titleText: title, timeText: time, dateText: date , kindText: kind, famousLineText: famousLine)
-                    presentationMode.wrappedValue.dismiss()
-                }
-                .sheet(isPresented: $isPresented){
-                    MainView()
+            ZStack{
+                //Color.black
+                //   .edgesIgnoringSafeArea(.all)
+                
+                VStack{
+                    HStack(spacing: 10) {
+                        ForEach(1..<6) { index in
+                            Image(systemName: index <= rating ? "star.fill" : "star")
+                                .resizable()
+                                .frame(width: 32, height: 32)
+                                .foregroundColor(index <= rating ? Color.yellow : Color.yellow)
+                                .onTapGesture {
+                                    rating = index
+                                }
+                        }
+                    }
+                    .padding()
+                    
+                    Text("평점을 매겨주세요")
+                        .foregroundColor(.black)
+                        .padding(.bottom, 20)
+                    
+                    TextField("영화제목", text: $title)
+                    TextField("러닝타임", text: $time)
+                    //TextField("평점", text: $kind)
+                    DatePicker("날짜", selection: $date, displayedComponents: .date)
+                    TextField("기억에 남는 명대사를 적어보세요!", text: $famousLine)
+                    Button("Save") {
+                        isPresented = true
+                        viewModel.saveData(titleText: title, timeText: time, dateText: date , rating: rating, famousLineText: famousLine)
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                    .sheet(isPresented: $isPresented){
+                        MainView()
+                    }
+                    Spacer()
+                    
+                    .navigationBarItems(trailing: Button("Cancel") {
+                        presentationMode.wrappedValue.dismiss()
+                    })
                 }
             }
-            .navigationTitle("Create Task")
-            .navigationBarItems(trailing: Button("Cancel") {
-                presentationMode.wrappedValue.dismiss()
-            })
         }
     }
 }

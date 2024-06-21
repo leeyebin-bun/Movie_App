@@ -4,54 +4,38 @@ import RealmSwift
 struct MainView: View {
     @StateObject private var viewModel = MyDataViewModel()
     @State private var isCreateViewPresented = false
+    @State private var isPosterViewPresented = false
     
     var body: some View {
         NavigationView {
-            ZStack{
+            ZStack {
                 Color.black
-                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    .edgesIgnoringSafeArea(.all)
                 VStack {
-                    RoundedRectangle(cornerRadius: 13)
-                        .fill(Color(red: 191/255, green: 255/255, blue: 0/255))
-                        .frame(width: 330 , height: 50)
-                    
-                    if let tasks = viewModel.tasks {
-                        ScrollView(.vertical, showsIndicators: false) {
-                            VStack {
-                                ForEach(tasks, id: \.id) { task in
+                    ScrollView(.vertical, showsIndicators: false) {
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
+                            ForEach(0..<6) { index in
+                                Button(action: {
+                                    isCreateViewPresented = true
+                                }) {
                                     VStack {
                                         RoundedRectangle(cornerRadius: 13)
-                                            .fill(Color.gray.opacity(0.3))
-                                            .frame(width: 330, height: 200)
+                                            .frame(width: 150, height: 150) // Adjust size as needed
                                             .overlay(
-                                                VStack {
-                                                    Text(task.titleText)
-                                                        .font(.headline)
-                                                        .foregroundColor(.white)
-                                                    Text(task.timeText)
-                                                        .font(.subheadline)
-                                                        .foregroundColor(.white)
-                                                    Text(formatDate(task.dateText))
-                                                        .font(.subheadline)
-                                                        .foregroundColor(.white)
-                                                    Text(task.kindText)
-                                                        .font(.headline)
-                                                        .foregroundColor(.white)
-                                                    Text(task.famousLineText)
-                                                        .font(.headline)
-                                                        .foregroundColor(.white)
-                                                    
-                                                }
-                                                    .padding()
+                                                Image("Th\(index + 1)")
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
                                             )
                                     }
-                                    .padding(.horizontal, 5)
+                                    .padding(10)
+                                    .cornerRadius(15)
                                 }
+                                .buttonStyle(PlainButtonStyle())
                             }
                         }
-                    } else {
-                        Text("Loading...")
+                        .padding(10)
                     }
+                    
                     Button(action: {
                         isCreateViewPresented.toggle()
                     }) {
