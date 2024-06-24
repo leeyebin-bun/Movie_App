@@ -2,11 +2,11 @@ import SwiftUI
 import RealmSwift
 
 struct MainView: View {
-    @ObservedObject private var viewModel = MyDataViewModel()
+    @ObservedObject var viewModel = MyDataViewModel()
     @State private var isCreateViewPresented = false
     @State private var isPosterViewPresented = false
     @State private var selectedImageData: ImageData?
-    
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -28,9 +28,11 @@ struct MainView: View {
                         }
                         .padding(20)
                     }
+                    
                     .sheet(isPresented: $isPosterViewPresented) {
                         if let imageData = selectedImageData {
                             PosterView(imageData: imageData)
+                            
                         }
                     }
                     Button(action: {
@@ -44,12 +46,17 @@ struct MainView: View {
                     }
                     .sheet(isPresented: $isCreateViewPresented) {
                         CreateView(viewModel: viewModel)
+                        
                     }
                     .padding(20)
                 }
                 .onAppear {
                     viewModel.getRealmData()
                 }
+                .navigationBarTitle("", displayMode: .inline) // 타이틀 숨기기
+                .navigationBarBackButtonHidden(true) // Back 버튼 숨기기
+                .navigationBarHidden(true) // 네비게이션 바 자체 숨기기
+                
             }
         }
     }

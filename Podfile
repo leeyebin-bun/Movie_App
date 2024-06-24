@@ -7,5 +7,6 @@ target 'Movie_App' do
 
   # Pods for Movie_App
     pod 'RealmSwift'
+    pod 'Alamofire'
 
 end

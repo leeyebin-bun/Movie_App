@@ -2,7 +2,7 @@ import SwiftUI
 import RealmSwift
 
 struct PosterView: View {
-    @ObservedObject private var viewModel = MyDataViewModel()
+    @ObservedObject var viewModel = MyDataViewModel()
     @State private var isCreateViewPresented = false
     @State private var isPosterViewPresented = false
     var imageData: ImageData
@@ -56,18 +56,7 @@ struct PosterView: View {
                     } else {
                         Text("Loading...")
                     }
-                    Button(action: {
-                        isCreateViewPresented.toggle()
-                    }) {
-                        Image(systemName: "plus")
-                            .foregroundColor(.black)
-                            .padding()
-                            .background(Color(red: 191/255, green: 255/255, blue: 0/255))
-                            .clipShape(Circle())
-                    }
-                    .sheet(isPresented: $isCreateViewPresented) {
-                        CreateView(viewModel: viewModel)
-                    }
+                    
                 }
                 .onAppear {
                     viewModel.getRealmData()

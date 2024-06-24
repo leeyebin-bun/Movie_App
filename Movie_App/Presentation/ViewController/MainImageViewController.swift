@@ -22,19 +22,13 @@ struct MainImageView: View {
                             .fill(Color(red: 191/255, green: 255/255, blue: 0/255))
                             .frame(width: 330, height: 50)
                             .overlay(
-                                HStack(spacing:100) {
-                                    Button(action: {
-                                        isPresented = true
-                                    }) {
+                                HStack(spacing: 100) {
+                                    NavigationLink(destination: MainView(viewModel: viewModel)) {
                                         Image(systemName: "plus")
                                             .foregroundColor(.black)
                                     }
-                                    .sheet(isPresented: $isPresented) {
-                                        MainView()
-                                    }
-                                    Button(action: {
-                                        
-                                    }) {
+                                    
+                                    NavigationLink(destination: PosterView(imageData : viewModel.images.first!)) {
                                         Image(systemName: "house")
                                             .foregroundColor(.black)
                                     }
@@ -44,7 +38,7 @@ struct MainImageView: View {
                             ForEach(tasks.indices, id: \.self) { index in
                                 let randomX = CGFloat.random(in: geometry.size.width * 0.25 ... geometry.size.width * 0.75)
                                 let randomY = CGFloat.random(in: geometry.size.height * 0.25 ... geometry.size.height * 0.75)
-                                                    
+                                
                                 let imageIndex = min(index, planetImage.count - 1)
                                 Image(uiImage: UIImage(named: planetImage[imageIndex]) ?? UIImage())
                                     .resizable()

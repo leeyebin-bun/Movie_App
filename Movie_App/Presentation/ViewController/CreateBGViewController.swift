@@ -2,7 +2,7 @@ import SwiftUI
 import RealmSwift
 
 struct CreateBGView : View {
-    @ObservedObject private var viewModel = MyDataViewModel()
+    @ObservedObject var viewModel = MyDataViewModel()
     @State private var isPresented = false
     
     var body: some View {
