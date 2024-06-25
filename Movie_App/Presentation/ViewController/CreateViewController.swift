@@ -1,10 +1,11 @@
 import SwiftUI
 import RealmSwift
-
+import Alamofire
 
 struct CreateView: View {
     @ObservedObject var viewModel: MyDataViewModel
     @Environment(\.presentationMode) var presentationMode
+    @StateObject private var viewModel = ImageUploadViewModel()
     @State private var isPresented = false
     @State private var title = ""
     @State private var time = ""
@@ -12,6 +13,8 @@ struct CreateView: View {
     @State private var kind = ""
     @State private var famousLine = ""
     @State private var rating: Int = 0
+    @State private var image: UIImage?
+    @State private var imageUrl: String?
     
     
     var body: some View {

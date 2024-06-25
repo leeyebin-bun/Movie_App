@@ -49,40 +49,40 @@ class MyDataViewModel: ObservableObject {
         tasks = realm.objects(MyDataModel.self).sorted(byKeyPath: "titleText", ascending: false)
     }
     
-    // 사진 업로드 요청
-    func uploadImage(image: UIImage, completionHandler: @escaping (Result<String, Error>) -> Void) {
-        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
-            completionHandler(.failure(NSError(domain: "ImageDataError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to convert image to data"])))
-            return
-        }
+    
+    class ImageUploadViewModel: ObservableObject {
         
-        let url = "https://example.com/upload"  // 서버의 업로드 API 주소
-        let headers: HTTPHeaders = [
-            "Content-Type": "multipart/form-data"
-        ]
-        
-        AF.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append(imageData, withName: "image", fileName: "image.jpg", mimeType: "image/jpeg")
-            // 다른 필요한 데이터가 있다면 여기서 추가할 수 있습니다.
-        }, to: url, method: .post, headers: headers)
-        .validate()
-        .responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                // 성공적으로 업로드된 경우 서버에서 반환한 데이터를 처리합니다.
-                if let data = value as? [String: Any], let imageUrl = data["imageUrl"] as? String {
-                    completionHandler(.success(imageUrl))
-                } else {
-                    completionHandler(.failure(NSError(domain: "UploadResponseError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid response format"])))
+        func uploadImage(image: UIImage, completion: @escaping (Result<String, Error>) -> Void) {
+            guard let imageData = image.jpegData(compressionQuality: 0.5) else {
+                completion(.failure(UploadError.invalidImageData))
+                return
+            }
+            
+            // Alamofire를 사용하여 이미지 업로드
+            AF.upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData, withName: "image", fileName: "image.jpg", mimeType: "image/jpeg")
+                // 필요에 따라 다른 필드 추가 가능
+            }, to: "https://api.example.com/upload")
+            .response { response in
+                switch response.result {
+                case .success(let data):
+                    // 이미지 업로드 성공
+                    // 서버에서 반환된 imageUrl 처리
+                    if let imageUrl = String(data: data, encoding: .utf8) {
+                        completion(.success(imageUrl))
+                    } else {
+                        completion(.failure(UploadError.invalidResponse))
+                    }
+                case .failure(let error):
+                    // 이미지 업로드 실패
+                    completion(.failure(error))
                 }
-            case .failure(let error):
-                completionHandler(.failure(error))
             }
         }
+        
+        enum UploadError: Error {
+            case invalidImageData
+            case invalidResponse
+        }
     }
-    
-    enum UploadError: Error {
-           case invalidImageData
-           case invalidResponse
-       }
 }
