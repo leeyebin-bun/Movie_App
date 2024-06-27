@@ -5,7 +5,6 @@ import Alamofire
 struct CreateView: View {
     @ObservedObject var viewModel: MyDataViewModel
     @Environment(\.presentationMode) var presentationMode
-    @StateObject private var viewModel = ImageUploadViewModel()
     @State private var isPresented = false
     @State private var title = ""
     @State private var time = ""

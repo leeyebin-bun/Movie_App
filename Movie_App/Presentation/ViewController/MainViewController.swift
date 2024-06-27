@@ -16,7 +16,7 @@ struct MainView: View {
                     HeaderView()
                     
                     ScrollView(.vertical, showsIndicators: false) {
-                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 5) {
                             ForEach(viewModel.images, id: \.id) { imageData in
                                 ImageButton(imageData: imageData) {
                                     selectedImageData = imageData
@@ -26,7 +26,7 @@ struct MainView: View {
                                 .cornerRadius(15)
                             }
                         }
-                        .padding(20)
+                        .padding(10)
                     }
                     
                     .sheet(isPresented: $isPosterViewPresented) {
@@ -66,26 +66,26 @@ struct MainView: View {
 struct HeaderView: View {
     var body: some View {
         VStack {
-            RoundedRectangle(cornerRadius: 13)
-                .fill(Color(red: 191/255, green: 255/255, blue: 0/255))
-                .frame(width: 330, height: 50)
-                .padding(.top , 30)
-            
-            HStack(spacing: 100) {
-                Button(action: {
-                    // action
-                }) {
-                    Image(systemName: "plus")
-                        .foregroundColor(.black)
-                }
-                
-                Button(action: {
-                    // action
-                }) {
-                    Image(systemName: "house")
-                        .foregroundColor(.black)
-                }
-            }
+//            RoundedRectangle(cornerRadius: 13)
+//                .fill(Color(red: 191/255, green: 255/255, blue: 0/255))
+//                .frame(width: 330, height: 50)
+//               // .padding(.top , 30)
+//            
+//            HStack(spacing: 100) {
+//                Button(action: {
+//                    // action
+//                }) {
+//                    Image(systemName: "plus")
+//                        .foregroundColor(.black)
+//                }
+//                
+//                Button(action: {
+//                    // action
+//                }) {
+//                    Image(systemName: "house")
+//                        .foregroundColor(.black)
+//                }
+//            }
         }
     }
 }
