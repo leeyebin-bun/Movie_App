@@ -1,12 +1,6 @@
-//
-//  AppDelegate.swift
-//  Movie_App
-//
-//  Created by 이예빈 on 2024/05/14.
-//
-
 import UIKit
 import RealmSwift
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
         print("realm 위치: ", Realm.Configuration.defaultConfiguration.fileURL!)
+        FirebaseApp.configure()
         // LaunchScreen 딜레이 시간 설정
         //sleep(1)
         return true

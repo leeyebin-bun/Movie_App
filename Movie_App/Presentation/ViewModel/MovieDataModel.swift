@@ -29,8 +29,8 @@ class MyDataViewModel: ObservableObject {
     }
     
     // 데이터 저장
-    func saveData(titleText: String, timeText: String, dateText: Date, rating: Int, famousLineText: String) {
-        let data = MyDataModel(titleText: titleText, timeText: timeText, dateText: dateText, rating: rating, famousLineText: famousLineText)
+    func saveData(titleText: String, timeText: String, dateText: Date, rating: Int, famousLineText: String, imageUrl: String?) {
+        let data = MyDataModel(titleText: titleText, timeText: timeText, dateText: dateText, rating: rating, famousLineText: famousLineText , imageUrl: imageUrl ?? "")
         
         do {
             try realm.write {

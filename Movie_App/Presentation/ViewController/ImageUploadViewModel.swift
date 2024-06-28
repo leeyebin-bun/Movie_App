@@ -1,39 +1,61 @@
 import SwiftUI
-import Alamofire
+import FirebaseStorage
 
 class ImageUploadViewModel: ObservableObject {
-    
+    @Published var imageUrl: String?
+    @Published var uploadProgress: Double = 0.0
+
     func uploadImage(image: UIImage, completion: @escaping (Result<String, Error>) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.5) else {
-            completion(.failure(UploadError.invalidImageData))
+            let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to get image data"])
+            completion(.failure(error))
             return
         }
-        
-        // Alamofire를 사용하여 이미지 업로드
-        AF.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append(imageData, withName: "image", fileName: "image.jpg", mimeType: "image/jpeg")
-            // 필요에 따라 다른 필드 추가 가능
-        }, to: "https://api.example.com/upload")
-        .response { response in
-            switch response.result {
-            case .success(let data):
-                // 이미지 업로드 성공
-                // 서버에서 반환된 imageUrl 처리
-                if let data = data, let imageUrl = String(data: data, encoding: .utf8) {
-                    completion(.success(imageUrl))
-                } else {
-                    completion(.failure(UploadError.invalidResponse))
+
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let imageUUID = UUID().uuidString
+        let imageRef = storageRef.child("images/\(imageUUID).jpg")
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+
+        let uploadTask = imageRef.putData(imageData, metadata: metadata) { metadata, error in
+            if let error = error {
+                print("Error uploading image: \(error.localizedDescription)")
+                completion(.failure(error))
+                return
+            }
+
+            imageRef.downloadURL { url, error in
+                if let error = error {
+                    print("Error getting download URL: \(error.localizedDescription)")
+                    completion(.failure(error))
+                    return
                 }
-            case .failure(let error):
-                // 이미지 업로드 실패
+
+                guard let downloadURL = url else {
+                    let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to get download URL"])
+                    print("Download URL is nil: \(error.localizedDescription)")
+                    completion(.failure(error))
+                    return
+                }
+
+                print("Image uploaded successfully. Download URL: \(downloadURL.absoluteString)")
+                self.imageUrl = downloadURL.absoluteString
+                completion(.success(downloadURL.absoluteString))
+            }
+        }
+
+        uploadTask.observe(.progress) { snapshot in
+            guard let progress = snapshot.progress else { return }
+            self.uploadProgress = Double(progress.completedUnitCount) / Double(progress.totalUnitCount) * 100.0
+        }
+
+        uploadTask.observe(.failure) { snapshot in
+            if let error = snapshot.error {
+                print("Upload failed: \(error.localizedDescription)")
                 completion(.failure(error))
             }
         }
     }
-    
-    enum UploadError: Error {
-        case invalidImageData
-        case invalidResponse
-    }
 }
-

@@ -12,14 +12,16 @@ class MyDataModel: Object, Identifiable {
     @Persisted var dateText: Date?
     @Persisted var rating: Int = 0// 별점(점수)
     @Persisted var famousLineText: String = ""
+    @Persisted var imageUrl: String? = nil
     
-    convenience init(titleText: String, timeText: String, dateText: Date, rating: Int, famousLineText: String) {
+    convenience init(titleText: String, timeText: String, dateText: Date, rating: Int, famousLineText: String , imageUrl: String) {
         self.init()
         self.titleText = titleText
         self.timeText = timeText
         self.dateText = dateText
         self.rating = rating
         self.famousLineText = famousLineText
+        self.imageUrl = imageUrl
     }
 }
 

@@ -8,5 +8,9 @@ target 'Movie_App' do
   # Pods for Movie_App
     pod 'RealmSwift'
     pod 'Alamofire'
+    pod 'FirebaseAnalytics'
+    pod 'Firebase/Storage'
+    pod 'FirebaseAuth'
+    pod 'FirebaseFirestore'
 
 end

@@ -1,27 +1,27 @@
 import SwiftUI
 import SplineRuntime
-import UIKit
+import FirebaseAuth
 
 struct ContentView: View {
     @State private var isPresented = false
+    @State private var isUserAuthenticated = Auth.auth().currentUser != nil
     
     var body: some View {
-        ZStack{
+        ZStack {
             Color.black
                 .edgesIgnoringSafeArea(.all)
             
-            VStack{
-                //3D
+            VStack {
+                // 3D Header
                 Header()
                     .frame(height: 530)
                 
-                VStack(spacing:20)
-                {
-                    Text("Let's eat Movie")
-                        .foregroundStyle(.white)
+                VStack(spacing: 20) {
+                    Text("Let's Eat Movie")
+                        .foregroundColor(.white)
                         .fontWeight(.bold)
                         .font(.system(size: 30))
-                    Text("It will be easier than you think !")
+                    Text("It will be easier than you think!")
                         .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
                         .font(.system(size: 16))
                     
@@ -29,65 +29,49 @@ struct ContentView: View {
                         self.isPresented.toggle()
                     }) {
                         Text("Start")
-                            .fontWeight(.bold) // 버튼 텍스트 크기 설정
+                            .fontWeight(.bold)
                             .padding()
                             .frame(width: 250)
                             .background(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
                             .foregroundColor(.black)
                             .cornerRadius(20)
                     }
-                    //MainView 로 이동
                     .sheet(isPresented: $isPresented) {
-                        CreateBGView()
-                        
+                        if isUserAuthenticated {
+                            CreateBGView()
+                        } else {
+                            LoginView(isUserAuthenticated: $isUserAuthenticated)
+                        }
                     }
                     .padding()
+                    
                     Spacer()
                 }
             }
         }
-    }
-  
-// UIKit 와 SwiftUI 화면 이동할때 사용
-/*
-     struct Coordinator {
-     func presentCreateView() {
-     guard let keyWindow = UIApplication.shared.windows.filter({$0.isKeyWindow}).first,
-     let rootViewController = keyWindow.rootViewController else {
-     return
-     }
-     
-     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-     guard let posterVC = storyboard.instantiateViewController(withIdentifier: "PosterView") as? UIViewController else {
-     return
-     }
-     
-     posterVC.modalTransitionStyle = .coverVertical
-     posterVC.modalPresentationStyle = .fullScreen
-     
-     rootViewController.present(posterVC, animated: true, completion: nil)
-     }
-     }
-*/
-    struct Header:View {
-        var body: some View {
-            let url = URL(string: "https://build.spline.design/TfTFKrASp3EMpzwRLbgf/scene.splineswift")!
-            try? SplineView(sceneFileURL: url).ignoresSafeArea(.all)
-        }
-    }
-    
-    struct Movie_App: App {
-        var body: some Scene {
-            WindowGroup {
-                ContentView()
+        .onAppear {
+            // 인증 상태 변경을 감지하여 isUserAuthenticated 업데이트
+            Auth.auth().addStateDidChangeListener { _, user in
+                isUserAuthenticated = user != nil
             }
         }
     }
 }
-   
-/*
-     #Preview {
-     ContentView()
-     }
-     
-*/
+
+// Header View (Spline Runtime 사용 예시)
+struct Header: View {
+    var body: some View {
+        let url = URL(string: "https://build.spline.design/TfTFKrASp3EMpzwRLbgf/scene.splineswift")!
+        if let splineView = try? SplineView(sceneFileURL: url) {
+            return AnyView(splineView.ignoresSafeArea(.all))
+        } else {
+            return AnyView(EmptyView())
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
