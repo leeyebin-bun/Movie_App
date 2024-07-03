@@ -10,7 +10,7 @@ class MyDataModel: Object, Identifiable {
     @Persisted var titleText: String = ""
     @Persisted var timeText: String = ""
     @Persisted var dateText: Date?
-    @Persisted var rating: Int = 0// 별점(점수)
+    @Persisted var rating: Int = 0
     @Persisted var famousLineText: String = ""
     @Persisted var imageUrl: String? = nil
     
