@@ -28,7 +28,6 @@ struct CreateBGView : View {
                             MainImageView(viewModel: viewModel)
                         }
                         Button(action: {
-                            // 아직 하나만 열어둘게용 ..
                         }) {
                             
                             Circle()
