@@ -1,7 +1,6 @@
 import UIKit
 import RealmSwift
 import SwiftUI
-import SplineRuntime
 
 
 // 사용자에게 보여질 데이터의 Model 정의

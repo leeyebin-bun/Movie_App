@@ -1,10 +1,10 @@
 import SwiftUI
-import SplineRuntime
+//import SplineRuntime
 import FirebaseAuth
 
 struct ContentView: View {
     @State private var isPresented = false
-    @State private var isUserAuthenticated = Auth.auth().currentUser != nil
+    //@State private var isUserAuthenticated = Auth.auth().currentUser != nil
     
     var body: some View {
         ZStack {
@@ -13,8 +13,8 @@ struct ContentView: View {
             
             VStack {
                 // 3D Header
-                Header()
-                    .frame(height: 530)
+                //Header()
+                   // .frame(height: 530)
                 
                 VStack(spacing: 20) {
                     Text("Let's Eat Movie")
@@ -37,11 +37,7 @@ struct ContentView: View {
                             .cornerRadius(20)
                     }
                     .sheet(isPresented: $isPresented) {
-                        if isUserAuthenticated {
-                            CreateBGView()
-                        } else {
-                            LoginView(isUserAuthenticated: $isUserAuthenticated)
-                        }
+                        CalendarView()
                     }
                     .padding()
                     
@@ -49,26 +45,26 @@ struct ContentView: View {
                 }
             }
         }
-        .onAppear {
-            // 인증 상태 변경을 감지하여 isUserAuthenticated 업데이트
-            Auth.auth().addStateDidChangeListener { _, user in
-                isUserAuthenticated = user != nil
-            }
-        }
+        //        .onAppear {
+        //            // 인증 상태 변경을 감지하여 isUserAuthenticated 업데이트
+        //            Auth.auth().addStateDidChangeListener { _, user in
+        //                isUserAuthenticated = user != nil
+        //            }
     }
 }
 
+
 // Header View (Spline Runtime 사용 예시)
-struct Header: View {
-    var body: some View {
-        let url = URL(string: "https://build.spline.design/TfTFKrASp3EMpzwRLbgf/scene.splineswift")!
-        if let splineView = try? SplineView(sceneFileURL: url) {
-            return AnyView(splineView.ignoresSafeArea(.all))
-        } else {
-            return AnyView(EmptyView())
-        }
-    }
-}
+//struct Header: View {
+//    var body: some View {
+////        let url = URL(string: "https://build.spline.design/TfTFKrASp3EMpzwRLbgf/scene.splineswift")!
+////        if let splineView = try? SplineView(sceneFileURL: url) {
+////            return AnyView(splineView.ignoresSafeArea(.all))
+////        } else {
+////            return AnyView(EmptyView())
+////        }
+//    }
+//}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
