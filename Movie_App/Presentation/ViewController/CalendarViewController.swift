@@ -1,22 +1,24 @@
 import SwiftUI
+import RealmSwift
 
 struct CalendarView: View {
     @State private var currentDate = Date()
     @State private var selectedDate: Date?
-    
+    @ObservedObject var viewModel = MyDataViewModel()
+
     private var currentWeek: [Date] {
         let calendar = Calendar.current
         let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: currentDate))!
         return (0..<7).compactMap { calendar.date(byAdding: .day, value: $0, to: startOfWeek) }
     }
-    
+
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "E\nd"
         formatter.locale = Locale(identifier: "ko_KR") // 한글 요일 설정
         return formatter
     }()
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -35,7 +37,7 @@ struct CalendarView: View {
             }
             .padding(.top, 20)
             .padding(.horizontal, 20)
-            
+
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 15) {
                     ForEach(currentWeek, id: \.self) { date in
@@ -56,22 +58,47 @@ struct CalendarView: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 20)
             }
-            
-            Spacer()
+
+            if let selectedDate = selectedDate {
+                List(viewModel.getTasks(for: selectedDate)) { task in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(task.titleText)
+                                .font(.headline)
+                            Text("러닝타임: \(task.timeText)")
+                            HStack {
+                                Text("평점: ")
+                                ForEach(0..<task.rating) { _ in
+                                    Image(systemName: "star.fill")
+                                        .foregroundColor(.yellow)
+                                }
+                            }
+                            Text("명대사: \(task.famousLineText)")
+                        }
+                        Spacer()
+                        if let imageUrl = task.imageUrl, !imageUrl.isEmpty {
+                                                    URLImage(urlString: imageUrl)
+                        }
+                    }
+                }
+                .listStyle(PlainListStyle())
+            } else {
+                Spacer()
+            }
         }
     }
-    
+
     private func getMonthString() -> String {
         let calendar = Calendar.current
         let year = calendar.component(.year, from: currentDate)
         let month = calendar.component(.month, from: currentDate)
         return "\(year)년 \(month)월"
     }
-    
+
     private func previousWeek() {
         currentDate = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: currentDate) ?? currentDate
     }
-    
+
     private func nextWeek() {
         currentDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: currentDate) ?? currentDate
     }

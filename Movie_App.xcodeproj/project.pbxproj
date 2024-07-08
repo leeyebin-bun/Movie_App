@@ -16,6 +16,7 @@
 		487C9CA12C2E9CA800704218 /* Pods_Movie_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D6891369B4E59B4F7BE452 /* Pods_Movie_App.framework */; };
 		487C9CAA2C2ECFC000704218 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 487C9CA92C2ECFC000704218 /* GoogleService-Info.plist */; };
 		487C9CAE2C39A5AA00704218 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C9CAD2C39A5AA00704218 /* CalendarViewController.swift */; };
+		487C9CB02C3ACC0700704218 /* URLImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C9CAF2C3ACC0700704218 /* URLImageModel.swift */; };
 		488C942D2BF30DC8004A1E41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C942C2BF30DC8004A1E41 /* AppDelegate.swift */; };
 		488C942F2BF30DC8004A1E41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C942E2BF30DC8004A1E41 /* SceneDelegate.swift */; };
 		488C94312BF30DC8004A1E41 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C94302BF30DC8004A1E41 /* MainViewController.swift */; };
@@ -55,6 +56,7 @@
 		486CAE182C1ADDE800DD65D4 /* MovieDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataModel.swift; sourceTree = "<group>"; };
 		487C9CA92C2ECFC000704218 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		487C9CAD2C39A5AA00704218 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		487C9CAF2C3ACC0700704218 /* URLImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageModel.swift; sourceTree = "<group>"; };
 		488C94292BF30DC8004A1E41 /* Movie_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movie_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		488C942C2BF30DC8004A1E41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		488C942E2BF30DC8004A1E41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				486CAE162C19725F00DD65D4 /* MovieData.swift */,
+				487C9CAF2C3ACC0700704218 /* URLImageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				486CAE172C19725F00DD65D4 /* MovieData.swift in Sources */,
 				489D3DCC2C22AD9E00F51F60 /* MainImageViewController.swift in Sources */,
 				488C942D2BF30DC8004A1E41 /* AppDelegate.swift in Sources */,
+				487C9CB02C3ACC0700704218 /* URLImageModel.swift in Sources */,
 				48C49CB82C23F2AD00FB7E77 /* CreateBGViewController.swift in Sources */,
 				485F9E1A2C2BF0E200DA2600 /* ImageUploadViewModel.swift in Sources */,
 				488C942F2BF30DC8004A1E41 /* SceneDelegate.swift in Sources */,

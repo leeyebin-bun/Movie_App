@@ -44,8 +44,19 @@ class MyDataViewModel: ObservableObject {
         getRealmData()
     }
     
+    //날짜 데이터 가져오기
+    func getTasks(for date: Date) -> [MyDataModel] {
+            let calendar = Calendar.current
+            let startOfDay = calendar.startOfDay(for: date)
+            let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+            
+            let predicate = NSPredicate(format: "dateText >= %@ AND dateText < %@", startOfDay as NSDate, endOfDay as NSDate)
+            return Array(realm.objects(MyDataModel.self).filter(predicate))
+        }
+    
     // 데이터 업데이트
     func getRealmData() {
         tasks = realm.objects(MyDataModel.self).sorted(byKeyPath: "titleText", ascending: false)
     }
+
 }
