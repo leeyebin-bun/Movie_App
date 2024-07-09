@@ -3,7 +3,7 @@ import RealmSwift
 
 struct CalendarView: View {
     @State private var currentDate = Date()
-    @State private var selectedDate: Date?
+    @State private var selectedDate: Date? = Date()
     @ObservedObject var viewModel = MyDataViewModel()
 
     private var currentWeek: [Date] {
@@ -44,9 +44,9 @@ struct CalendarView: View {
                         VStack {
                             Text(dateFormatter.string(from: date))
                                 .font(.system(size: 13))
-                                .foregroundColor(date == selectedDate ? .blue : .black)
+                                .foregroundColor(isSelected(date) ? .blue : .black)
                                 .frame(width: 40, height: 40) // 일정한 크기 지정
-                                .background(date == selectedDate ? Color.blue.opacity(0.2) : Color.clear)
+                                .background(isSelected(date) ? Color.blue.opacity(0.2) : Color.clear)
                                 .clipShape(Circle())
                                 .onTapGesture {
                                     selectedDate = date
@@ -77,7 +77,7 @@ struct CalendarView: View {
                         }
                         Spacer()
                         if let imageUrl = task.imageUrl, !imageUrl.isEmpty {
-                                                    URLImage(urlString: imageUrl)
+                            URLImage(urlString: imageUrl)
                         }
                     }
                 }
@@ -86,6 +86,10 @@ struct CalendarView: View {
                 Spacer()
             }
         }
+        .onAppear {
+            selectedDate = Date() // 페이지 로드 시 현재 날짜로 포커스
+            currentDate = Date()
+        }
     }
 
     private func getMonthString() -> String {
@@ -93,6 +97,13 @@ struct CalendarView: View {
         let year = calendar.component(.year, from: currentDate)
         let month = calendar.component(.month, from: currentDate)
         return "\(year)년 \(month)월"
+    }
+
+    private func isSelected(_ date: Date) -> Bool {
+        if let selectedDate = selectedDate {
+            return Calendar.current.isDate(date, inSameDayAs: selectedDate)
+        }
+        return false
     }
 
     private func previousWeek() {
