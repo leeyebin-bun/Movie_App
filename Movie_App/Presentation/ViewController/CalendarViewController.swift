@@ -4,6 +4,7 @@ import RealmSwift
 struct CalendarView: View {
     @State private var currentDate = Date()
     @State private var selectedDate: Date? = Date()
+    @State private var isCreateViewPresented = false
     @ObservedObject var viewModel = MyDataViewModel()
 
     private var currentWeek: [Date] {
@@ -20,70 +21,92 @@ struct CalendarView: View {
     }()
 
     var body: some View {
-        VStack {
-            HStack {
-                Button(action: previousWeek) {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.black)
-                        .font(.system(size: 10))
-                }
-                Text(getMonthString())
-                    .font(.system(size: 15))
-                Button(action: nextWeek) {
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(.black)
-                        .font(.system(size: 10))
-                }
-            }
-            .padding(.top, 20)
-            .padding(.horizontal, 20)
-
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 15) {
-                    ForEach(currentWeek, id: \.self) { date in
-                        VStack {
-                            Text(dateFormatter.string(from: date))
-                                .font(.system(size: 13))
-                                .foregroundColor(isSelected(date) ? .blue : .black)
-                                .frame(width: 40, height: 40) // 일정한 크기 지정
-                                .background(isSelected(date) ? Color.blue.opacity(0.2) : Color.clear)
-                                .clipShape(Circle())
-                                .onTapGesture {
-                                    selectedDate = date
-                                    currentDate = date
-                                }
-                        }
+        ZStack {
+            VStack {
+                HStack {
+                    Button(action: previousWeek) {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.black)
+                            .font(.system(size: 10))
+                    }
+                    Text(getMonthString())
+                        .font(.system(size: 15))
+                    Button(action: nextWeek) {
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.black)
+                            .font(.system(size: 10))
                     }
                 }
+                .padding(.top, 20)
                 .padding(.horizontal, 20)
-                .padding(.bottom, 20)
-            }
 
-            if let selectedDate = selectedDate {
-                List(viewModel.getTasks(for: selectedDate)) { task in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(task.titleText)
-                                .font(.headline)
-                            Text("러닝타임: \(task.timeText)")
-                            HStack {
-                                Text("평점: ")
-                                ForEach(0..<task.rating) { _ in
-                                    Image(systemName: "star.fill")
-                                        .foregroundColor(.yellow)
-                                }
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 15) {
+                        ForEach(currentWeek, id: \.self) { date in
+                            VStack {
+                                Text(dateFormatter.string(from: date))
+                                    .font(.system(size: 13))
+                                    .foregroundColor(isSelected(date) ? .blue : .black)
+                                    .frame(width: 40, height: 40) // 일정한 크기 지정
+                                    .background(isSelected(date) ? Color.blue.opacity(0.2) : Color.clear)
+                                    .clipShape(Circle())
+                                    .onTapGesture {
+                                        selectedDate = date
+                                        currentDate = date
+                                    }
                             }
-                            Text("명대사: \(task.famousLineText)")
-                        }
-                        Spacer()
-                        if let imageUrl = task.imageUrl, !imageUrl.isEmpty {
-                            URLImage(urlString: imageUrl)
                         }
                     }
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 20)
                 }
-                .listStyle(PlainListStyle())
-            } else {
+
+                if let selectedDate = selectedDate {
+                    List(viewModel.getTasks(for: selectedDate)) { task in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(task.titleText)
+                                    .font(.headline)
+                                Text("러닝타임: \(task.timeText)")
+                                HStack {
+                                    Text("평점: ")
+                                    ForEach(0..<task.rating) { _ in
+                                        Image(systemName: "star.fill")
+                                            .foregroundColor(.yellow)
+                                    }
+                                }
+                                Text("명대사: \(task.famousLineText)")
+                            }
+                            Spacer()
+                            if let imageUrl = task.imageUrl, !imageUrl.isEmpty {
+                                URLImage(urlString: imageUrl)
+                            }
+                        }
+                    }
+                    .listStyle(PlainListStyle())
+                } else {
+                    Spacer()
+                }
+            }
+
+            VStack {
                 Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        isCreateViewPresented.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                            .foregroundColor(.black)
+                            .padding()
+                            .background(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
+                            .clipShape(Circle())
+                    }
+                    Spacer()
+                    .sheet(isPresented: $isCreateViewPresented) {
+                        CreateView(viewModel: viewModel)
+                    }
+                }
             }
         }
         .onAppear {
