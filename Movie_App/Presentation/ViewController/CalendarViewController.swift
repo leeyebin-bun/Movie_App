@@ -113,6 +113,7 @@ struct CalendarView: View {
             selectedDate = Date() // 페이지 로드 시 현재 날짜로 포커스
             currentDate = Date()
         }
+        .navigationBarHidden(true) // 네비게이션 바 숨기기
     }
 
     private func getMonthString() -> String {
