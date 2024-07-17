@@ -73,8 +73,8 @@ struct CalendarView: View {
                                     ForEach(0..<task.rating) { _ in
                                         Image(systemName: "star.fill")
                                             .foregroundColor(.yellow)
-                                            .font(.system(size: 12))
-                                            .padding(.trailing, -4)
+                                            .font(.system(size: 12)) // 별모양 크기
+                                            .padding(.trailing, -4) // 별모양 간격 조절
                                     }
                                 }
                                 Text("명대사: \(task.famousLineText)")
