@@ -24,7 +24,7 @@ struct CreateView: View {
                         Image(systemName: index <= rating ? "star.fill" : "star")
                             .resizable()
                             .frame(width: 32, height: 32)
-                            .foregroundColor(index <= rating ? Color.yellow : Color.gray)
+                            .foregroundColor(index <= rating ? Color.yellow : Color.yellow)
                             .onTapGesture {
                                 rating = index
                             }
@@ -40,7 +40,7 @@ struct CreateView: View {
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(5)
-                TextField("러닝타임", text: $time)
+                TextField("----", text: $time)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(5)
