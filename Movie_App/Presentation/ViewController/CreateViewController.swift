@@ -40,7 +40,7 @@ struct CreateView: View {
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(5)
-                TextField("----", text: $time)
+                TextField("아직 못정했다....", text: $time)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(5)

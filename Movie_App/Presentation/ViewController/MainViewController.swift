@@ -56,6 +56,7 @@ struct MainView: View {
                 
             }
         }
+        .navigationBarHidden(true) // 네비게이션 바 숨기기
     }
 }
 

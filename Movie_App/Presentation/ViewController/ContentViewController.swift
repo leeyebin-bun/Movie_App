@@ -20,7 +20,7 @@ struct ContentView: View {
                             .foregroundColor(Color(UIColor(red: 191/255, green: 255/255, blue: 0/255, alpha: 1.0)))
                             .font(.system(size: 16))
                         
-                        NavigationLink(destination: CalendarView()) {
+                        NavigationLink(destination: MainView()) {
                             Text("Start")
                                 .fontWeight(.bold)
                                 .padding()
