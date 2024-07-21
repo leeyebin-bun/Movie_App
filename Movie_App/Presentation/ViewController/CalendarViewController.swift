@@ -4,6 +4,9 @@ import RealmSwift
 struct CalendarView: View {
     @State private var currentDate = Date()
     @State private var selectedDate: Date? = Date()
+    // = Date(): selectedDate 변수의 초기값으로 현재 날짜와 시간을 나타내는 Date()를 할당
+    // Date 는 nil 일수도 , Date 타입을 가질 수 도 있다.
+    // selectedDate 를 현재날짜로 초기화하여 선언한다.
     @State private var isCreateViewPresented = false
     @ObservedObject var viewModel = MyDataViewModel()
 
@@ -61,7 +64,7 @@ struct CalendarView: View {
                     .padding(.bottom, 20)
                 }
 
-                if let selectedDate = selectedDate {
+                if let selectedDate = selectedDate {  // selectedDate가 nil이 아닌 경우, 즉 날짜가 선택된 경우에만 실행
                     List(viewModel.getTasks(for: selectedDate)) { task in
                         HStack {
                             VStack(alignment: .leading) {
@@ -85,7 +88,7 @@ struct CalendarView: View {
                             }
                         }
                     }
-                    .listStyle(PlainListStyle())
+                    .listStyle(PlainListStyle()) // 리스트에 단순한 스타일을 적용하여 구분선이나 불필요한 장식을 제거하고 깔끔한 외형을 유지한다.
                 } else {
                     Spacer()
                 }
