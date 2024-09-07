@@ -1,6 +1,8 @@
 import SwiftUI
 import Firebase
 
+/// 영화평 생성하는 페이지
+/// --------------
 struct CreateView: View {
     @ObservedObject var viewModel: MyDataViewModel
     @StateObject private var imageUploadViewModel = ImageUploadViewModel()
