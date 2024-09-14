@@ -34,27 +34,27 @@ struct CreateView: View {
                 }
                 .padding()
                 
-                Text("평점을 매겨주세요")
-                    .foregroundColor(.black)
-                    .padding(.bottom, 20)
-                
-                TextField("영화제목", text: $title)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(5)
-                TextField("아직 못정했다....", text: $time)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(5)
-                DatePicker("날짜", selection: $date, displayedComponents: .date)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(5)
-                TextField("기억에 남는 명대사를 적어보세요!", text: $famousLine)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(5)
-                
+//                Text("평점을 매겨주세요")
+//                    .foregroundColor(.black)
+//                    .padding(.bottom, 20)
+//                
+//                TextField("영화제목", text: $title)
+//                    .padding()
+//                    .background(Color(.systemGray6))
+//                    .cornerRadius(5)
+//                TextField("아직 못정했다....", text: $time)
+//                    .padding()
+//                    .background(Color(.systemGray6))
+//                    .cornerRadius(5)
+//                DatePicker("날짜", selection: $date, displayedComponents: .date)
+//                    .padding()
+//                    .background(Color(.systemGray6))
+//                    .cornerRadius(5)
+//                TextField("기억에 남는 명대사를 적어보세요!", text: $famousLine)
+//                    .padding()
+//                    .background(Color(.systemGray6))
+//                    .cornerRadius(5)
+//                
                 Button(action: {
                     self.isShowingImagePicker = true
                 }) {
